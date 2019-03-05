@@ -15,8 +15,11 @@ import numpy as np
 #                              columns=['domain', 'ip']) )
 #     df = unique_tuples(df)
 #     print(df)
+#     print(result)
+
 
 def unique_tuples(df):
-    unique_df = df.drop_duplicates(subset=('domain', 'ip')).drop(labels = 'time',axis = 1)
+    unique_df = df.drop_duplicates(subset=('domain', 'ip')).drop('time', axis = 1)
     return unique_df
 
+# main()
