@@ -32,4 +32,12 @@ def count_tuples(df):
     count_df = df.groupby(['domain','ip']).count()
     return count_df
 
+def count(df):
+    count_df = df.groupby(['domain']).count()
+    return count_df
+
+def count_visits(df):
+    count_df = df.groupby(['domain']).pivot('ip').count()
+    return count_df
+
 # main()
