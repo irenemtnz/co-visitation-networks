@@ -1,0 +1,6 @@
+  Cache entry deserialization failed, e  DownloadingYou are using pip version 9.0.3, however version 19.0.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+none-any.whl
+Requirement already satisfied: six>=1.4.0 in /Users/irene1/anaconda3/lib/python3.7/site-packages (from unittest-xml-reporting~=2.0)
+Installing collected packages: unittest-xml-reporting
+Successfully installed unittest-xml-reporting-2.4.0

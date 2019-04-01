@@ -1,0 +1,20 @@
+    DEPRECATION: Uninstalling a distutils installed project (entrypoints) has been deprecated and will be removed in a future version. This is due to the fact that uninstalling a distutils project will only partially uninstall the project.
+You are using pip version 9.0.3, however version 19.0.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+e-any.whl (59kB)
+Requirement already satisfied: mccabe<0.7.0,>=0.6.0 in /Users/irene1/anaconda3/lib/python3.7/site-packages (from flake8~=3.5)
+Collecting pycodestyle<2.6.0,>=2.5.0 (from flake8~=3.5)
+  Downloading https://files.pythonhosted.org/packages/0e/0c/04a353e104d2f324f8ee5f4b32012618c1c86dd79e52a433b64fceed511b/pycodestyle-2.5.0-py2.py3-none-any.whl (51kB)
+Collecting entrypoints<0.4.0,>=0.3.0 (from flake8~=3.5)
+  Downloading https://files.pythonhosted.org/packages/ac/c6/44694103f8c221443ee6b0041f69e2740d89a25641e62fb4f2ee568f2f9c/entrypoints-0.3-py2.py3-none-any.whl
+Installing collected packages: pyflakes, pycodestyle, entrypoints, flake8
+  Found existing installation: pyflakes 2.0.0
+    Uninstalling pyflakes-2.0.0:
+      Successfully uninstalled pyflakes-2.0.0
+  Found existing installation: pycodestyle 2.4.0
+    Uninstalling pycodestyle-2.4.0:
+      Successfully uninstalled pycodestyle-2.4.0
+  Found existing installation: entrypoints 0.2.3
+    Uninstalling entrypoints-0.2.3:
+      Successfully uninstalled entrypoints-0.2.3
+Successfully installed entrypoints-0.3 flake8-3.7.7 pycodestyle-2.5.0 pyflakes-2.1.1

@@ -1,0 +1,5 @@
+You are using pip version 9.0.3, however version 19.0.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+/coverage-4.5.3-cp37-cp37m-macosx_10_13_x86_64.whl (180kB)
+Installing collected packages: coverage
+Successfully installed coverage-4.5.3

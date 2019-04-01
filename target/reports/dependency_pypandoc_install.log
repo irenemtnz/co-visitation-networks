@@ -1,0 +1,12 @@
+  Cache entry deserializa  Downloading https://files.pythonhosted.org/packages/71/81/00184643e5a10a456b4You are using pip version 9.0.3, however version 19.0.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+site-packages (from pypandoc~=1.4)
+Requirement already satisfied: pip>=8.1.0 in /Users/irene1/anaconda3/lib/python3.7/site-packages (from pypandoc~=1.4)
+Requirement already satisfied: wheel>=0.25.0 in /Users/irene1/anaconda3/lib/python3.7/site-packages (from pypandoc~=1.4)
+Building wheels for collected packages: pypandoc
+  Running setup.py bdist_wheel for pypandoc: started
+  Running setup.py bdist_wheel for pypandoc: finished with status 'done'
+  Stored in directory: /Users/irene1/Library/Caches/pip/wheels/3e/55/4f/59e0fa0914f3db52e87c0642c5fb986871dfbbf253026e639f
+Successfully built pypandoc
+Installing collected packages: pypandoc
+Successfully installed pypandoc-1.4

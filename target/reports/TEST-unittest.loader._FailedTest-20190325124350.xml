@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite errors="1" failures="0" file="unittest/loader.py" name="unittest.loader._FailedTest-20190325124350" skipped="0" tests="1" time="0.012" timestamp="2019-03-25T12:43:50">
+	<testcase classname="unittest.loader._FailedTest" file="/Users/irene1/anaconda3/lib/python3.7/unittest/loader.py" line="33" name="functions_tests" time="0.012" timestamp="2019-03-25T12:43:50">
+		<error message="Failed to import test module: functions_tests
+Traceback (most recent call last):
+  File &quot;/Users/irene1/anaconda3/lib/python3.7/unittest/loader.py&quot;, line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File &quot;/Users/irene1/Documents/GitHub/co-visitation-networks/src/unittest/python/functions_tests.py&quot;, line 4, in &lt;module&gt;
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+" type="ImportError">
+<![CDATA[ImportError: Failed to import test module: functions_tests
+Traceback (most recent call last):
+  File "/Users/irene1/anaconda3/lib/python3.7/unittest/loader.py", line 154, in loadTestsFromName
+    module = __import__(module_name)
+  File "/Users/irene1/Documents/GitHub/co-visitation-networks/src/unittest/python/functions_tests.py", line 4, in <module>
+    from pyspark.sql import SparkSession
+ModuleNotFoundError: No module named 'pyspark'
+
+]]>		</error>
+	</testcase>
+</testsuite>

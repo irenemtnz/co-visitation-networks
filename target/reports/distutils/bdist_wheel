@@ -1,0 +1,51 @@
+running clean
+'build/lib' does not exist -- can't clean it
+'build/bdist.macosx-10.7-x86_64' does not exist -- can't clean it
+'build/scripts-3.7' does not exist -- can't clean it
+running bdist_wheel
+running build
+running build_py
+creating build
+creating build/lib
+copying domain_parse.py -> build/lib
+copying co_visit_rate.py -> build/lib
+copying conttest.py -> build/lib
+copying unique.py -> build/lib
+copying count.py -> build/lib
+copying weigthed.py -> build/lib
+installing to build/bdist.macosx-10.7-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.macosx-10.7-x86_64
+creating build/bdist.macosx-10.7-x86_64/wheel
+copying build/lib/domain_parse.py -> build/bdist.macosx-10.7-x86_64/wheel
+copying build/lib/co_visit_rate.py -> build/bdist.macosx-10.7-x86_64/wheel
+copying build/lib/conttest.py -> build/bdist.macosx-10.7-x86_64/wheel
+copying build/lib/unique.py -> build/bdist.macosx-10.7-x86_64/wheel
+copying build/lib/count.py -> build/bdist.macosx-10.7-x86_64/wheel
+copying build/lib/weigthed.py -> build/bdist.macosx-10.7-x86_64/wheel
+running install_egg_info
+running egg_info
+writing co_visitation_networks.egg-info/PKG-INFO
+writing dependency_links to co_visitation_networks.egg-info/dependency_links.txt
+writing namespace_packages to co_visitation_networks.egg-info/namespace_packages.txt
+writing top-level names to co_visitation_networks.egg-info/top_level.txt
+reading manifest file 'co_visitation_networks.egg-info/SOURCES.txt'
+writing manifest file 'co_visitation_networks.egg-info/SOURCES.txt'
+Copying co_visitation_networks.egg-info to build/bdist.macosx-10.7-x86_64/wheel/co_visitation_networks-1.0.dev0-py3.7.egg-info
+running install_scripts
+creating build/bdist.macosx-10.7-x86_64/wheel/co_visitation_networks-1.0.dev0.dist-info/WHEEL
+creating 'dist/co_visitation_networks-1.0.dev0-py3-none-any.whl' and adding 'build/bdist.macosx-10.7-x86_64/wheel' to it
+adding 'co_visit_rate.py'
+adding 'conttest.py'
+adding 'count.py'
+adding 'domain_parse.py'
+adding 'unique.py'
+adding 'weigthed.py'
+adding 'co_visitation_networks-1.0.dev0.dist-info/METADATA'
+adding 'co_visitation_networks-1.0.dev0.dist-info/WHEEL'
+adding 'co_visitation_networks-1.0.dev0.dist-info/namespace_packages.txt'
+adding 'co_visitation_networks-1.0.dev0.dist-info/top_level.txt'
+adding 'co_visitation_networks-1.0.dev0.dist-info/zip-safe'
+adding 'co_visitation_networks-1.0.dev0.dist-info/RECORD'
+removing build/bdist.macosx-10.7-x86_64/wheel
