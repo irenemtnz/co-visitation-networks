@@ -125,11 +125,12 @@ class Test(unittest.TestCase):
                                                 ['A', 'w', '9']],
                                                ['domain', 'ip', 'time']))
 
-        output_df = co_visit.co_visit(input_df).toPandas()
+        output_df = co_visit.covisit(input_df, 0.5, 2, True).toPandas()
         expected_df = (pd.DataFrame(np.array([['B', 1.0, 0.0, 0.0],
                                               ['C', 0.5, 0.0, 0.0],
                                               ['A', 0.0, 0.5, 0.25]]),
                                     columns=['domain', 'A', 'B', 'C']))
+
         expected_df['A'] = expected_df['A'].astype(float)
         expected_df['B'] = expected_df['B'].astype(float)
         expected_df['C'] = expected_df['C'].astype(float)
