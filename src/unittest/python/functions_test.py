@@ -5,7 +5,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import *
 from pyspark.sql.types import *
 
-import unique, count, domain_parse, co_visit
+import unique, count, domain_parse, co_visit, co_visit
 
 
 class Test(unittest.TestCase):
@@ -38,6 +38,7 @@ class Test(unittest.TestCase):
                                                 ['C', 'z', '8']],
                                                ['domain', 'ip', 'time']))
         output_df = count.count_tuples(input_df).toPandas()
+
         expected_df = (pd.DataFrame(np.array([['A', 'x', '2'],
                                               ['B', 'x', '1'],
                                               ['B', 'y', '1'],
@@ -116,26 +117,99 @@ class Test(unittest.TestCase):
 
     def test_relation_visits(self):
         input_df = (Test.spark.createDataFrame([['A', 'x', '3'],
-                                                ['B', 'y', '4'],
+                                                ['A', 'y', '2'],
+                                                ['A', 'w', '9'],
                                                 ['A', 'x', '5'],
                                                 ['B', 'x', '6'],
+                                                ['B', 'x', '10'],
+                                                ['B', 'y', '4'],
                                                 ['C', 'w', '7'],
-                                                ['C', 'z', '8'],
-                                                ['A', 'y', '2'],
-                                                ['A', 'w', '9']],
+                                                ['C', 'z', '8']],
                                                ['domain', 'ip', 'time']))
 
-        output_df = co_visit.covisit(input_df, 0.5, 2, True).toPandas()
-        expected_df = (pd.DataFrame(np.array([['B', 1.0, 0.0, 0.0],
-                                              ['C', 0.5, 0.0, 0.0],
-                                              ['A', 0.0, 0.5, 0.25]]),
-                                    columns=['domain', 'A', 'B', 'C']))
+        output_df = co_visit.covisit(input_df, 0.0, 0, False).toPandas()
 
-        expected_df['A'] = expected_df['A'].astype(float)
-        expected_df['B'] = expected_df['B'].astype(float)
-        expected_df['C'] = expected_df['C'].astype(float)
-        assert_frame_equal_with_sort(output_df, expected_df, ['domain', 'A', 'B', 'C'])
+        expected_df = (pd.DataFrame(np.array([['A', 'B', 0.5, 2],
+                                              ['A', 'C', 0.25, 1],
+                                              ['B', 'A', 1, 2],
+                                              ['C', 'A', 0.5, 1]]),
+                                    columns=['domain', 'domain2', 'covisit', 'visits']))
 
+        expected_df['covisit'] = expected_df['covisit'].astype(float)
+        assert_frame_equal_with_sort(output_df, expected_df, ['domain', 'domain2', 'covisit'])
+
+    def test_all_visits_equal(self):
+        input_df = (Test.spark.createDataFrame([['A', 'x', '3'],
+                                                ['A', 'x', '2'],
+                                                ['A', 'y', '9'],
+                                                ['B', 'x', '6'],
+                                                ['B', 'x', '10'],
+                                                ['B', 'y', '4']],
+                                               ['domain', 'ip', 'time']))
+
+        output_df = co_visit.covisit(input_df, 0.0, 0, False).toPandas()
+
+        expected_df = (pd.DataFrame(np.array([['A', 'B', 1.0, 3],
+                                              ['B', 'A', 1.0, 3]]),
+                                    columns=['domain', 'domain2', 'covisit', 'visits']))
+
+        expected_df['covisit'] = expected_df['covisit'].astype(float)
+        assert_frame_equal_with_sort(output_df, expected_df, ['domain', 'domain2', 'covisit'])
+
+    def test_some_visits_repeated(self):
+        input_df = (Test.spark.createDataFrame([['A', 'x', '1'],
+                                                ['A', 'x', '2'],
+                                                ['A', 'y', '3'],
+                                                ['B', 'x', '4'],
+                                                ['B', 'w', '5'],
+                                                ['B', 'y', '6']],
+                                               ['domain', 'ip', 'time']))
+
+        output_df = co_visit.covisit(input_df, 0.0, 0, False).toPandas()
+
+        expected_df = (pd.DataFrame(np.array([['A', 'B', 0.6, 2],
+                                              ['B', 'A', 0.6, 2]]),
+                                    columns=['domain', 'domain2', 'covisit', 'visits']))
+
+        expected_df['covisit'] = expected_df['covisit'].astype(float)
+        assert_frame_equal_with_sort(output_df, expected_df, ['domain', 'domain2', 'covisit'])
+
+    def test_more_visits_A(self):
+        input_df = (Test.spark.createDataFrame([['A', 'x', '1'],
+                                                ['B', 'x', '2'],
+                                                ['B', 'x', '3'],
+                                                ['B', 'x', '4'],
+                                                ['B', 'x', '5']],
+                                               ['domain', 'ip', 'time']))
+
+        output_df = co_visit.covisit(input_df, 0.0, 0, False).toPandas()
+
+        expected_df = (pd.DataFrame(np.array([['A', 'B', 1.0, 1],
+                                              ['B', 'A', 0.25, 1]]),
+                                    columns=['domain', 'domain2', 'covisit', 'visits']))
+
+        expected_df['covisit'] = expected_df['covisit'].astype(float)
+        assert_frame_equal_with_sort(output_df, expected_df, ['domain', 'domain2', 'covisit'])
+
+    def test_multiple_visits_both(self):
+        input_df = (Test.spark.createDataFrame([['x', 'A', '10'],
+                                          ['x', 'A', '20'],
+                                          ['x', 'B', '11'],
+                                          ['x', 'B', '21'],
+                                          ['y', 'A', '30'],
+                                          ['y', 'A', '40'],
+                                          ['y', 'B', '31'],
+                                          ['y', 'B', '41']],
+                                         ['ip', 'domain', 'date_time']))
+
+        output_df = co_visit.covisit(input_df, 0.0, 0, False).toPandas()
+
+        expected_df = (pd.DataFrame(np.array([['A', 'B', 1.0, 4],
+                                              ['B', 'A', 1.0, 4]]),
+                                    columns=['domain', 'domain2', 'covisit', 'visits']))
+
+        expected_df['covisit'] = expected_df['covisit'].astype(float)
+        assert_frame_equal_with_sort(output_df, expected_df, ['domain', 'domain2', 'covisit'])
 
 def assert_frame_equal_with_sort(results, expected, keycolumns):
     expected_sorted = expected.sort_values(by=keycolumns).reset_index(drop=True).sort_index(axis=1)
