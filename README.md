@@ -1,1 +1,1 @@
-# Implementing co-visitation networks todetect fraud in online advertising
+# Implementing co-visitation networks to detect fraud in online advertising
