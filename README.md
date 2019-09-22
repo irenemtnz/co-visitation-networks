@@ -1,1 +1,1 @@
-# Implementación de técnicas de detección de fraude en publicidad online
+# Implementing co-visitation networks todetect fraud in online advertising
